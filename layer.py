@@ -53,6 +53,10 @@ class EchoLayer(YowInterfaceLayer):
 
         elif messagereceived == "nmap":
             result = subprocess.check_output("sudo nmap -sn 192.168.2.1-100", shell=True)
+            self.ReplyWith(result, sendto)
+
+        elif messagereceived == "whoishome":
+            result = subprocess.check_output("sudo nmap -sn 192.168.2.1-100", shell=True)
             #self.ReplyWith(result, sendto)
 
             for mac in xrange(len(macaddresses[0])):
