@@ -39,8 +39,6 @@ class EchoLayer(YowInterfaceLayer):
         if messagereceived == message.lower() :
             response = "YO"
 
-        elif messagereceived == "reboot":
-
 
         else :
             response = "Please send -YO- to get score."
