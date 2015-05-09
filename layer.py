@@ -6,10 +6,10 @@ from yowsup.layers.protocol_media.protocolentities  import LocationMediaMessageP
 from yowsup.layers.protocol_acks.protocolentities      import OutgoingAckProtocolEntity
 from yowsup.layers.protocol_media.protocolentities  import VCardMediaMessageProtocolEntity
 
-import os
+import os, subprocess
 
 message = 'yo'
-authorisednumber = '65902675647'
+authorisednumber = '6590675647'
 
 class EchoLayer(YowInterfaceLayer):
 
@@ -46,7 +46,11 @@ class EchoLayer(YowInterfaceLayer):
                 self.ReplyWith("rebooting..", sendto)
                 os.system("sudo reboot")
             else:
-                self.ReplyWith("Not authorised", sendto)
+                self.ReplyWith("NOT AUTHORISED", sendto)
+
+        elif messagereceived == "nmap":
+            result = subprocess.check_output("sudo nmap -sn 192.168.2.1-100", shell=True)
+            self.ReplyWith(result, sendto)
 
 
         else :
