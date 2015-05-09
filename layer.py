@@ -9,7 +9,7 @@ from yowsup.layers.protocol_media.protocolentities  import VCardMediaMessageProt
 import os
 
 message = 'yo'
-authorisednumber = '6590675647'
+authorisednumber = '65902675647'
 
 class EchoLayer(YowInterfaceLayer):
 
