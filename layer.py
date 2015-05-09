@@ -11,7 +11,7 @@ import os, subprocess
 message = 'yo'
 authorisednumber = '6590675647'
 
-macaddresses = [ [ "D8:96:95:12:01:02", "F0:Cb:A1:60:56:D3", "80:EA:96:3B:2B:01", "80:ea:96:3b:2b:01", "28:e1:4c:a9:64:3e"] , [ "Max iPhone", "Steven", "Gerry", "Peilynn", "Mylene" ] ]
+macaddresses = [ [ "D8:96:95:12:01:02", "F0:Cb:A1:60:56:D3", "80:EA:96:3B:2B:01", "80:ea:96:3b:2b:01", "28:E1:4C:A9:64:3E"] , [ "Max iPhone", "Steven", "Gerry", "Peilynn", "Mylene" ] ]
 
 
 class EchoLayer(YowInterfaceLayer):
@@ -59,7 +59,7 @@ class EchoLayer(YowInterfaceLayer):
                 if macaddresses[0][mac].upper() in result:
                     self.ReplyWith(macaddresses[1][mac] + " is home", sendto)
 
-                self.ReplyWith("-- End of List --", sendto)
+            self.ReplyWith("-- End of List --", sendto)
                 
 
 
