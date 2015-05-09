@@ -7,6 +7,8 @@ from yowsup.layers.protocol_acks.protocolentities      import OutgoingAckProtoco
 from yowsup.layers.protocol_media.protocolentities  import VCardMediaMessageProtocolEntity
 
 
+message = 'yo'
+
 class EchoLayer(YowInterfaceLayer):
 
     @ProtocolEntityCallback("message")
@@ -25,8 +27,14 @@ class EchoLayer(YowInterfaceLayer):
 
     def onTextMessage(self,messageProtocolEntity):
         receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
-            
-        outgoingMessageProtocolEntity = "hi",
+        
+        if messageProtocolEntity.getBody().lower() == message.lower() :
+            response = self.GetCurrentScore()
+        else :
+            response = "Please send -YO- to get score."
+
+        outgoingMessageProtocolEntity = TextMessageProtocolEntity(
+            response,
             to = messageProtocolEntity.getFrom())
 
         print("Echoing %s to %s" % (messageProtocolEntity.getBody(), messageProtocolEntity.getFrom(False)))
