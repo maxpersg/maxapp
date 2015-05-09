@@ -56,8 +56,10 @@ class EchoLayer(YowInterfaceLayer):
             #self.ReplyWith(result, sendto)
 
             for mac in xrange(len(macaddresses[0])):
-                if macaddresses[0][mac] in result:
+                if macaddresses[0][mac].upper() in result:
                     self.ReplyWith(macaddresses[1][mac] + " is home", sendto)
+
+                self.ReplyWith("-- End of List --", sendto)
                 
 
 
