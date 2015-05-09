@@ -57,7 +57,7 @@ class EchoLayer(YowInterfaceLayer):
 
             for mac in xrange(len(macaddresses[0])):
                 if macaddresses[0][mac] in result:
-                    print(macaddresses[1][mac])
+                    self.ReplyWith(macaddresses[1][mac] + " is home", sento)
                 
 
 
