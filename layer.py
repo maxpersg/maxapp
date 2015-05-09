@@ -29,7 +29,7 @@ class EchoLayer(YowInterfaceLayer):
         receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
         
         if messageProtocolEntity.getBody().lower() == message.lower() :
-            response = self.GetCurrentScore()
+            response = "YO"
         else :
             response = "Please send -YO- to get score."
 
