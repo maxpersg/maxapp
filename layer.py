@@ -52,6 +52,7 @@ class EchoLayer(YowInterfaceLayer):
 
 
     def ReplyWith(self,response,recipient):
+        print("sending %s to %s" % (response, recipient))        
         outgoingMessageProtocolEntity = TextMessageProtocolEntity(
             response,
             to = recipient)        
