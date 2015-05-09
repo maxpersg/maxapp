@@ -40,7 +40,7 @@ class EchoLayer(YowInterfaceLayer):
         if messagereceived == message.lower() :
             response = "YO"
 
-        elif messagereceived == "reboot" & recipient == authorisednumber:
+        elif messagereceived == "reboot" and recipient == authorisednumber:
             self.ReplyWith("rebooting..", recipient)
             os.system("sudo reboot")
 
