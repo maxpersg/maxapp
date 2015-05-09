@@ -6,6 +6,7 @@ from yowsup.layers.protocol_media.protocolentities  import LocationMediaMessageP
 from yowsup.layers.protocol_acks.protocolentities      import OutgoingAckProtocolEntity
 from yowsup.layers.protocol_media.protocolentities  import VCardMediaMessageProtocolEntity
 
+import os
 
 message = 'yo'
 
@@ -28,7 +29,9 @@ class EchoLayer(YowInterfaceLayer):
     def onTextMessage(self,messageProtocolEntity):
         receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
         
-        if messageProtocolEntity.getBody().lower() == message.lower() :
+        messagereceived = messageProtocolEntity.getBody().lower()
+
+        if messagereceived == message.lower() :
             response = "YO"
         else :
             response = "Please send -YO- to get score."
