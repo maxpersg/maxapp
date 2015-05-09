@@ -45,7 +45,7 @@ class EchoLayer(YowInterfaceLayer):
 
         else :
 
-            self.ReplyWith(Invalid command laaa, recipient)
+            self.ReplyWith("'Invalid command laaa'", recipient)
 
         # outgoingMessageProtocolEntity = TextMessageProtocolEntity(
         #     response,
