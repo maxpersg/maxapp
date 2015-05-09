@@ -58,9 +58,9 @@ class EchoLayer(YowInterfaceLayer):
             #self.ReplyWith(result, sendto)
 
             for row in macs:
-                for column in row:
-                    print(macs[row,column])
-                    print("\n")
+                print(macs[row,0])
+                print("\n")
+
                 
 
 
