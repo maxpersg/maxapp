@@ -9,6 +9,7 @@ from yowsup.layers.protocol_media.protocolentities  import VCardMediaMessageProt
 import os
 
 message = 'yo'
+authorisednumber = '6590675647'
 
 class EchoLayer(YowInterfaceLayer):
 
@@ -28,9 +29,15 @@ class EchoLayer(YowInterfaceLayer):
 
     def onTextMessage(self,messageProtocolEntity):
         receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
-        
+        recipient = messageProtocolEntity.getFrom(False)
         messagereceived = messageProtocolEntity.getBody().lower()
 
+        #send receipt otherwise we keep receiving the same message over and over
+        self.toLower(receipt)
+        self.toLower(outgoingMessageProtocolEntity)
+
+
+        #Generate responses based on commands received
         if messagereceived == message.lower() :
             response = "YO"
         else :
@@ -40,11 +47,9 @@ class EchoLayer(YowInterfaceLayer):
             response,
             to = messageProtocolEntity.getFrom())
 
-        print("Echoing %s to %s" % (messageProtocolEntity.getBody(), messageProtocolEntity.getFrom(False)))
+        print("Replying %s to %s" % (response, recipient))
 
-        #send receipt otherwise we keep receiving the same message over and over
-        self.toLower(receipt)
-        self.toLower(outgoingMessageProtocolEntity)
+
 
     def onMediaMessage(self, messageProtocolEntity):
         if messageProtocolEntity.getMediaType() == "image":
