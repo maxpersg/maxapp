@@ -62,8 +62,6 @@ class EchoLayer(YowInterfaceLayer):
                 print("\n")
 
 
-            if mac[0,0] in result:
-                self.ReplyWith(mac[0,1]+ " is Home", sendto)
 
 
 
