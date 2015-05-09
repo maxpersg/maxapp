@@ -1,0 +1,3 @@
+#!/bin/sh
+script='/home/pi/yocricketscore/run.py'
+/usr/bin/python $script
