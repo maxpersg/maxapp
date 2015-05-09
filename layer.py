@@ -11,7 +11,7 @@ import os, subprocess
 message = 'yo'
 authorisednumber = '6590675647'
 
-macaddresses = [ [ "D8:96:95:12:01:02", "F0:Cb:A1:60:56:D3", "7C:FA:DF:BD:0A:17", "80:ea:96:3b:2b:01", "28:E1:4C:A9:64:3E"] , [ "Max iPhone", "Steven", "Gerry", "Peilynn", "Mylene" ] ]
+macaddresses = [ [ "D8:96:95:12:01:02", "F0:Cb:A1:60:56:D3", "7C:FA:DF:BD:0A:17", "80:ea:96:3b:2b:01", "28:E1:4C:A9:64:3E", "F0:25:B7:18:60:1F"] , [ "Max iPhone", "Steven", "Gerry", "Peilynn", "Mylene", "Jia Jia" ] ]
 
 
 class EchoLayer(YowInterfaceLayer):
