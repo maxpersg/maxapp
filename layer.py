@@ -57,7 +57,7 @@ class EchoLayer(YowInterfaceLayer):
             result = subprocess.check_output("sudo nmap -sn 192.168.2.1-100", shell=True)
             #self.ReplyWith(result, sendto)
             if mac[0,0] in result:
-                self.ReplyWith("Max is Home", sendto)
+                self.ReplyWith(mac[0,1]+ " is Home", sendto)
 
 
 
