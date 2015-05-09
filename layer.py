@@ -1,76 +1,118 @@
 from yowsup.layers.interface                           import YowInterfaceLayer, ProtocolEntityCallback
 from yowsup.layers.protocol_messages.protocolentities  import TextMessageProtocolEntity
-from yowsup.layers.protocol_media.protocolentities  import ImageDownloadableMediaMessageProtocolEntity
 from yowsup.layers.protocol_receipts.protocolentities  import OutgoingReceiptProtocolEntity
-from yowsup.layers.protocol_media.protocolentities  import LocationMediaMessageProtocolEntity
 from yowsup.layers.protocol_acks.protocolentities      import OutgoingAckProtocolEntity
-from yowsup.layers.protocol_media.protocolentities  import VCardMediaMessageProtocolEntity
 
+import time
+import datetime
+import json
+import unirest
+
+current_score = ['0', '']
+
+# Text Message to check
+message = 'YO'
+
+# World Cup series id for massap up
+WORLDCUP_ID = '2223'
+
+# Timer to update the score
+SCORE_TIMER = 5
 
 class EchoLayer(YowInterfaceLayer):
 
     @ProtocolEntityCallback("message")
     def onMessage(self, messageProtocolEntity):
+        #send receipt otherwise we keep receiving the same message over and over
 
-        if not messageProtocolEntity.isGroupMessage():
-            if messageProtocolEntity.getType() == 'text':
-                self.onTextMessage(messageProtocolEntity)
-            elif messageProtocolEntity.getType() == 'media':
-                self.onMediaMessage(messageProtocolEntity)
-    
+        if True:
+            receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
+
+            if messageProtocolEntity.getBody().lower() == message.lower() :
+                response = self.GetCurrentScore()
+            else :
+                response = "Please send -YO- to get score."
+
+            outgoingMessageProtocolEntity = TextMessageProtocolEntity(
+                response,
+                to = messageProtocolEntity.getFrom())
+
+            self.toLower(receipt)
+            self.toLower(outgoingMessageProtocolEntity)
+
     @ProtocolEntityCallback("receipt")
     def onReceipt(self, entity):
-        ack = OutgoingAckProtocolEntity(entity.getId(), "receipt", entity.getType(), entity.getFrom())
+        ack = OutgoingAckProtocolEntity(entity.getId(), "receipt", "delivery")
         self.toLower(ack)
 
-    def onTextMessage(self,messageProtocolEntity):
-        receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
-            
-        outgoingMessageProtocolEntity = TextMessageProtocolEntity(
-            messageProtocolEntity.getBody(),
-            to = messageProtocolEntity.getFrom())
+    def GetCurrentScore(self):
 
-        print("Echoing %s to %s" % (messageProtocolEntity.getBody(), messageProtocolEntity.getFrom(False)))
+        # Get current time
+        current_time = int(time.time())
 
-        #send receipt otherwise we keep receiving the same message over and over
-        self.toLower(receipt)
-        self.toLower(outgoingMessageProtocolEntity)
+        # Difference between last score and current time
+        diff = (datetime.datetime.fromtimestamp(current_time) - datetime.datetime.fromtimestamp(int(current_score[0])))
 
-    def onMediaMessage(self, messageProtocolEntity):
-        if messageProtocolEntity.getMediaType() == "image":
-            
-            receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
+        count = 1
 
-            outImage = ImageDownloadableMediaMessageProtocolEntity(
-                messageProtocolEntity.getMimeType(), messageProtocolEntity.fileHash, messageProtocolEntity.url, messageProtocolEntity.ip,
-                messageProtocolEntity.size, messageProtocolEntity.fileName, messageProtocolEntity.encoding, messageProtocolEntity.width, messageProtocolEntity.height,
-                messageProtocolEntity.getCaption(),
-                to = messageProtocolEntity.getFrom(), preview = messageProtocolEntity.getPreview())
+        # if Diff is more then 5 second set new score to current score else send last score
+        if diff.total_seconds() > SCORE_TIMER :
 
-            print("Echoing image %s to %s" % (messageProtocolEntity.url, messageProtocolEntity.getFrom(False)))
+            current_score[0] = str(current_time)
 
-            #send receipt otherwise we keep receiving the same message over and over
-            self.toLower(receipt)
-            self.toLower(outImage)
+            # These code snippets use an open-source library. http://unirest.io/python
+            response = unirest.get("https://devru-live-cricket-scores-v1.p.mashape.com/livematches.php",
+              headers={
+                "X-Mashape-Key": "f76O8zuLRNmshHWZSIZ41xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", # use your X-Mashape-key
+                "Accept": "application/json"
+              }
+            )
 
-        elif messageProtocolEntity.getMediaType() == "location":
+            data = json.dumps(response.body, separators=(',',':'))
+            matches = json.loads(data)
 
-            receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
+            current_s = ''
 
-            outLocation = LocationMediaMessageProtocolEntity(messageProtocolEntity.getLatitude(),
-                messageProtocolEntity.getLongitude(), messageProtocolEntity.getLocationName(),
-                messageProtocolEntity.getLocationURL(), messageProtocolEntity.encoding,
-                to = messageProtocolEntity.getFrom(), preview=messageProtocolEntity.getPreview())
+            for match in matches :
 
-            print("Echoing location (%s, %s) to %s" % (messageProtocolEntity.getLatitude(), messageProtocolEntity.getLongitude(), messageProtocolEntity.getFrom(False)))
+                if match['srsid'] == WORLDCUP_ID :
+                
+                    if match['header']['mchState'] == 'inprogress' or match['header']['mchState'] == 'complete' :
 
-            #send receipt otherwise we keep receiving the same message over and over
-            self.toLower(outLocation)
-            self.toLower(receipt)
-        elif messageProtocolEntity.getMediaType() == "vcard":
-            receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
-            outVcard = VCardMediaMessageProtocolEntity(messageProtocolEntity.getName(),messageProtocolEntity.getCardData(),to = messageProtocolEntity.getFrom())
-            print("Echoing vcard (%s, %s) to %s" % (messageProtocolEntity.getName(), messageProtocolEntity.getCardData(), messageProtocolEntity.getFrom(False)))
-            #send receipt otherwise we keep receiving the same message over and over
-            self.toLower(outVcard)
-            self.toLower(receipt)
+                        bat_id = match['miniscore']['batteamid']
+                        bowl_id = match['miniscore']['bowlteamid']
+
+                        if match['team1']['id'] == bat_id :
+                            bat_name = match['team1']['sName']
+                            bowl_name = match['team2']['sName']
+                        else :
+                            bat_name = match['team2']['sName']
+                            bowl_name = match['team1']['sName']
+
+                        score_head = match['header']['mnum']
+
+                        batting_score = str(bat_name) + ' ' + match['miniscore']['batteamscore'] + '(' + match['miniscore']['overs'] + ')'
+
+                        summary = match['miniscore']['striker']['fullName'] + ' ' + match['miniscore']['striker']['runs'] + '(' + match['miniscore']['striker']['balls'] + ')' + ', ' + match['miniscore']['nonStriker']['fullName'] + ' ' + match['miniscore']['nonStriker']['runs'] + '(' + match['miniscore']['nonStriker']['balls'] + ')'
+
+                        bowl_score = match['miniscore']['bowlteamscore'] + ' ' + str(bowl_name)
+
+                        status = match['header']['status']
+
+                        score = score_head + ': ' + batting_score + ' v ' + bowl_score + ', ' + summary + ', ' + status
+
+                        current_s = current_s + score + '\n'
+
+            current_score[1] = current_s
+
+        # Create Text response
+        text_response = current_score[1]
+
+        #Return details
+        return text_response
+
+
+
+
+
+        
