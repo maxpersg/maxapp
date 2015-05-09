@@ -40,7 +40,8 @@ class EchoLayer(YowInterfaceLayer):
             response = "YO"
 
         elif messagereceived == "reboot":
-            
+            response = "rebooting"
+
 
         else :
             response = "Please send -YO- to get score."
