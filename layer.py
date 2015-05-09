@@ -29,7 +29,7 @@ class EchoLayer(YowInterfaceLayer):
 
     def onTextMessage(self,messageProtocolEntity):
         receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
-        recipient = messageProtocolEntity.getFrom(False)
+        recipient = messageProtocolEntity.getFrom(false)
         messagereceived = messageProtocolEntity.getBody().lower()
 
         #send receipt otherwise we keep receiving the same message over and over
@@ -47,7 +47,7 @@ class EchoLayer(YowInterfaceLayer):
             response,
             to = messageProtocolEntity.getFrom())
 
-        print("Replying %s to %s" % (response, recipient))
+        print("Replying %s to %s" % (response, messageProtocolEntity.getFrom(False)))
 
 
 
