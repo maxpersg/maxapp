@@ -44,7 +44,7 @@ class EchoLayer(YowInterfaceLayer):
 
 
         else :
-            response = "Please send -YO- to get score."
+            self.ReplyWith("Invalid command laaa", recipient)
 
         # outgoingMessageProtocolEntity = TextMessageProtocolEntity(
         #     response,
@@ -53,7 +53,7 @@ class EchoLayer(YowInterfaceLayer):
         # self.toLower(outgoingMessageProtocolEntity)        
 
         print("Replying %s to %s" % (response, recipient))
-        self.ReplyWith(response, recipient)
+        
 
         #send receipt otherwise we keep receiving the same message over and over
 
