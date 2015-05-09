@@ -1,2 +1,0 @@
-# maxapp
-whatsapp over rPi
