@@ -38,18 +38,27 @@ class EchoLayer(YowInterfaceLayer):
         #Generate responses based on commands received
         if messagereceived == message.lower() :
             response = "YO"
+
+        elif messagereceived == "reboot":
+
+
         else :
             response = "Please send -YO- to get score."
 
-        outgoingMessageProtocolEntity = TextMessageProtocolEntity(
-            response,
-            to = messageProtocolEntity.getFrom())
+        self.ReplyWith(response,receiptent)
 
         print("Replying %s to %s" % (response, recipient))
 
         #send receipt otherwise we keep receiving the same message over and over
 
+
+
+    def ReplyWith(self,text,receiptent):
+        outgoingMessageProtocolEntity = TextMessageProtocolEntity(
+            text,
+            to = receiptent)        
         self.toLower(outgoingMessageProtocolEntity)
+
 
     def onMediaMessage(self, messageProtocolEntity):
         if messageProtocolEntity.getMediaType() == "image":
