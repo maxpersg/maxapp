@@ -63,7 +63,7 @@ class EchoLayer(YowInterfaceLayer):
 
         outgoingMessageProtocolEntity = TextMessageProtocolEntity(
              response,
-             to = messageProtocolEntity.getFrom())
+             to = recipient)
 
         self.toLower(outgoingMessageProtocolEntity)  
 
