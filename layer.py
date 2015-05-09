@@ -57,9 +57,11 @@ class EchoLayer(YowInterfaceLayer):
             result = subprocess.check_output("sudo nmap -sn 192.168.2.1-100", shell=True)
             #self.ReplyWith(result, sendto)
 
-            for mac in macs:
-                print(row)
-                print("\n")
+            for row in macs:
+                for column in row:
+                    print(column)
+                    print("\n")
+                
 
 
 
