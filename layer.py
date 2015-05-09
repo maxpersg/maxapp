@@ -29,7 +29,7 @@ class EchoLayer(YowInterfaceLayer):
 
     def onTextMessage(self,messageProtocolEntity):
         receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
-        recipient = messageProtocolEntity.getFrom(False)
+        recipient = messageProtocolEntity.getFrom()
         messagereceived = messageProtocolEntity.getBody().lower()
 
         self.toLower(receipt)
