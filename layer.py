@@ -29,7 +29,8 @@ class EchoLayer(YowInterfaceLayer):
 
     def onTextMessage(self,messageProtocolEntity):
         receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
-        recipient = messageProtocolEntity.getFrom()
+        recipient = messageProtocolEntity.getFrom(False)
+        sendto = messageProtocolEntity.getFrom()
         messagereceived = messageProtocolEntity.getBody().lower()
 
         #send receipt otherwise we keep receiving the same message over and over
@@ -38,16 +39,19 @@ class EchoLayer(YowInterfaceLayer):
 
         #Generate responses based on commands received
         if messagereceived == message.lower() :
-            response = "YO"
+            elf.ReplyWith("Hi, i'm a RaspberryPi", sendto)
 
-        elif messagereceived == "reboot" and recipient == authorisednumber:
-            self.ReplyWith("rebooting..", recipient)
-            os.system("sudo reboot")
+        elif messagereceived == "reboot":
+            if recipient == authorisednumber:
+                self.ReplyWith("rebooting..", sendto)
+                os.system("sudo reboot")
+            else:
+                self.ReplyWith("Not authorised", sendto)
 
 
         else :
             reponse = "invalid command"
-            self.ReplyWith("Invalid command laaa", recipient)
+            self.ReplyWith("Invalid command laaa", sendto)
 
         # outgoingMessageProtocolEntity = TextMessageProtocolEntity(
         #     response,
