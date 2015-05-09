@@ -26,8 +26,7 @@ class EchoLayer(YowInterfaceLayer):
     def onTextMessage(self,messageProtocolEntity):
         receipt = OutgoingReceiptProtocolEntity(messageProtocolEntity.getId(), messageProtocolEntity.getFrom())
             
-        outgoingMessageProtocolEntity = TextMessageProtocolEntity(
-            messageProtocolEntity.getBody(),
+        outgoingMessageProtocolEntity = "hi",
             to = messageProtocolEntity.getFrom())
 
         print("Echoing %s to %s" % (messageProtocolEntity.getBody(), messageProtocolEntity.getFrom(False)))
