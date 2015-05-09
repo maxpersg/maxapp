@@ -11,8 +11,7 @@ import os, subprocess
 message = 'yo'
 authorisednumber = '6590675647'
 mac = {}
-mac[0,0] = "D8:96:95:12:01:02"
-mac[0,1] = "Max iPhone"
+mac[0,0] = "D8:96:95:12:01:02", mac[0,1] = "Max iPhone"
 mac_steven = "F0:Cb:A1:60:56:D3"
 mac_gerry = "80:EA:96:3B:2B:01"
 
