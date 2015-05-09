@@ -5,9 +5,7 @@ from yowsup.layers.protocol_acks.protocolentities      import OutgoingAckProtoco
 
 import time
 import datetime
-import json
 
-current_score = ['0', '']
 
 # Text Message to check
 message = 'YO'
@@ -15,8 +13,6 @@ message = 'YO'
 # World Cup series id for massap up
 WORLDCUP_ID = '2223'
 
-# Timer to update the score
-SCORE_TIMER = 5
 
 class EchoLayer(YowInterfaceLayer):
 
@@ -43,6 +39,8 @@ class EchoLayer(YowInterfaceLayer):
     def onReceipt(self, entity):
         ack = OutgoingAckProtocolEntity(entity.getId(), "receipt", "delivery")
         self.toLower(ack)
+
+
 
 
 
