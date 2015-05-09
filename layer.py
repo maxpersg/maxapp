@@ -43,7 +43,7 @@ class EchoLayer(YowInterfaceLayer):
         else :
             response = "Please send -YO- to get score."
 
-        self.ReplyWith(response,receiptent)
+        self.ReplyWith(response,recipient)
 
         print("Replying %s to %s" % (response, recipient))
 
@@ -51,10 +51,10 @@ class EchoLayer(YowInterfaceLayer):
 
 
 
-    def ReplyWith(self,text,receiptent):
+    def ReplyWith(self,text,recipient):
         outgoingMessageProtocolEntity = TextMessageProtocolEntity(
             text,
-            to = receiptent)        
+            to = recipient)        
         self.toLower(outgoingMessageProtocolEntity)
 
 
