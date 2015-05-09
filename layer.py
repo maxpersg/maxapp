@@ -10,10 +10,11 @@ import os, subprocess
 
 message = 'yo'
 authorisednumber = '6590675647'
-mac = {}
-mac[0,0] = "D8:96:95:12:01:02"; mac[0,1] = "Max iPhone"
-mac_steven = "F0:Cb:A1:60:56:D3"
-mac_gerry = "80:EA:96:3B:2B:01"
+macs = {}
+macs[0,0] = "D8:96:95:12:01:02"; macs[0,1] = "Max iPhone"
+macs[1,0] = "F0:Cb:A1:60:56:D3"; macs[1,1] = "Steven"
+macs[2,0] = "80:EA:96:3B:2B:01"; macs[2,1] = "Gerry"
+
 
 class EchoLayer(YowInterfaceLayer):
 
@@ -55,6 +56,12 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "nmap":
             result = subprocess.check_output("sudo nmap -sn 192.168.2.1-100", shell=True)
             #self.ReplyWith(result, sendto)
+
+            for mac in macs:
+                print(mac)
+                print("\n")
+
+
             if mac[0,0] in result:
                 self.ReplyWith(mac[0,1]+ " is Home", sendto)
 
