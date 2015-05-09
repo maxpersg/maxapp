@@ -32,9 +32,7 @@ class EchoLayer(YowInterfaceLayer):
         recipient = messageProtocolEntity.getFrom(false)
         messagereceived = messageProtocolEntity.getBody().lower()
 
-        #send receipt otherwise we keep receiving the same message over and over
         self.toLower(receipt)
-        self.toLower(outgoingMessageProtocolEntity)
 
 
         #Generate responses based on commands received
@@ -47,9 +45,11 @@ class EchoLayer(YowInterfaceLayer):
             response,
             to = messageProtocolEntity.getFrom())
 
-        print("Replying %s to %s" % (response, messageProtocolEntity.getFrom(False)))
+        print("Replying %s to %s" % (response, recipient))
 
+        #send receipt otherwise we keep receiving the same message over and over
 
+        self.toLower(outgoingMessageProtocolEntity)
 
     def onMediaMessage(self, messageProtocolEntity):
         if messageProtocolEntity.getMediaType() == "image":
