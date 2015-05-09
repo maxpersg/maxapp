@@ -10,7 +10,9 @@ import os, subprocess
 
 message = 'yo'
 authorisednumber = '6590675647'
-mac_max = "D8:96:95:12:01:02"
+mac[0][0] = "D8:96:95:12:01:02", mac[0][1] = "Max iPhone"
+mac_steven = "F0:Cb:A1:60:56:D3"
+mac_gerry = "80:EA:96:3B:2B:01"
 
 class EchoLayer(YowInterfaceLayer):
 
@@ -40,7 +42,7 @@ class EchoLayer(YowInterfaceLayer):
 
         #Generate responses based on commands received
         if messagereceived == message.lower() :
-            elf.ReplyWith("Hi, i'm a RaspberryPi", sendto)
+            self.ReplyWith("Hi, i'm a RaspberryPi", sendto)
 
         elif messagereceived == "reboot":
             if recipient == authorisednumber:
@@ -52,7 +54,7 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "nmap":
             result = subprocess.check_output("sudo nmap -sn 192.168.2.1-100", shell=True)
             #self.ReplyWith(result, sendto)
-            if mac_max in result:
+            if mac[0][0] in result:
                 self.ReplyWith("Max is Home", sendto)
 
 
