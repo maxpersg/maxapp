@@ -58,7 +58,7 @@ class EchoLayer(YowInterfaceLayer):
             #self.ReplyWith(result, sendto)
 
             for mac in macs:
-                print(mac)
+                print(row)
                 print("\n")
 
 
