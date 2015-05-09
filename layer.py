@@ -6,7 +6,6 @@ from yowsup.layers.protocol_acks.protocolentities      import OutgoingAckProtoco
 import time
 import datetime
 import json
-import unirest
 
 current_score = ['0', '']
 
