@@ -10,6 +10,7 @@ import os, subprocess
 
 message = 'yo'
 authorisednumber = '6590675647'
+mac_max = "28:37:37:1E:21:8A"
 
 class EchoLayer(YowInterfaceLayer):
 
@@ -50,7 +51,10 @@ class EchoLayer(YowInterfaceLayer):
 
         elif messagereceived == "nmap":
             result = subprocess.check_output("sudo nmap -sn 192.168.2.1-100", shell=True)
-            self.ReplyWith(result, sendto)
+            #self.ReplyWith(result, sendto)
+            if mac_max in result:
+                self.ReplyWith("Max is Home", sendto)
+
 
 
         else :
