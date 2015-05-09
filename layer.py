@@ -46,15 +46,26 @@ class EchoLayer(YowInterfaceLayer):
         else :
             response = "Please send -YO- to get score."
 
-        outgoingMessageProtocolEntity = TextMessageProtocolEntity(
-            response,
-            to = messageProtocolEntity.getFrom())
+        # outgoingMessageProtocolEntity = TextMessageProtocolEntity(
+        #     response,
+        #     to = messageProtocolEntity.getFrom())
+
+        # self.toLower(outgoingMessageProtocolEntity)        
 
         print("Replying %s to %s" % (response, recipient))
+        self.ReplyWith(response, recipient)
 
         #send receipt otherwise we keep receiving the same message over and over
 
-        self.toLower(outgoingMessageProtocolEntity)
+
+
+    def ReplyWith(self, response, recipient):
+
+        outgoingMessageProtocolEntity = TextMessageProtocolEntity(
+             response,
+             to = messageProtocolEntity.getFrom())
+
+        self.toLower(outgoingMessageProtocolEntity)  
 
     def onMediaMessage(self, messageProtocolEntity):
         if messageProtocolEntity.getMediaType() == "image":
