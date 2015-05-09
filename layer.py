@@ -59,7 +59,7 @@ class EchoLayer(YowInterfaceLayer):
 
             for row in macs:
                 for column in row:
-                    print(mac[row,column])
+                    print(macs[row,column])
                     print("\n")
                 
 
