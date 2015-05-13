@@ -39,9 +39,9 @@ def traffic():
         jsonObj = json.loads(content)
         #print json.dumps(jsonObj, sort_keys=True, indent=4)
 
-        print len(jsonObj["d"])
+        #print len(jsonObj["d"])
 
-        for x in jsonObj["d"]:
+        #for x in jsonObj["d"]:
                 #print(jsonObj["d"][str(x)]["Message"])
                 print x["Message"]
         #print json.dump(
