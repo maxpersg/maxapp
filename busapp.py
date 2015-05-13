@@ -8,11 +8,11 @@ if __name__=="__main__":
 
 	#Authentication parameter
 	headers = { 'AccountKey' : 'MnvwjNVGDVKl8Ig9uipL3Q==',
-		'UniqueUserID' : '5ee234fc-3e3d-4423-a4a5-1b6ed77cdbe3',
+		'UniqueUserID' : 'ee84f4e2-caae-4ab5-afa3-02a7348efd2f',
 		'accept' : 'application/json'} #Request results in JSON
 
 	#API parameters
-	uri = 'http://datamallplus.cloudapp.net' #Resource URL
+	uri = 'http://datamall.cloudapp.net' #Resource URL
 	path = '/ltaodataservice.svc/IncidentSet?'
 
 	#Query parameters
