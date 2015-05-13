@@ -11,11 +11,12 @@ headers = { 'AccountKey' : 'MnvwjNVGDVKl8Ig9uipL3Q==',
         'accept' : 'application/json'} #Request results in JSON
 
 #API parameters
-uri = 'http://datamall.cloudapp.net' #Resource URL
+ #Resource URL
 
 
 
 def traffic():
+        uri = 'http://datamall.cloudapp.net'
         path = '/ltaodataservice.svc/IncidentSet?'
         #Query parameters
         params = {}#'Latitude':'1.304980', #Search within a radius
@@ -44,6 +45,7 @@ def traffic():
         return jsonObj
 
 def bus():
+        uri = 'http://datamall2.cloudapp.net'
         path = '/ltaodataservice/BusArrival?'
 
         #Query parameters
