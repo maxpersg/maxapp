@@ -70,8 +70,8 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "traffic":
             results = traffic.traffic()
             for x in results["d"]:
-                    #print(jsonObj["d"][str(x)]["Message"])
-                    self.ReplyWith(results["Message"],sendto)
+                #print(jsonObj["d"][str(x)]["Message"])
+                self.ReplyWith(results["Message"],sendto)
 
 
 
