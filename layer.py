@@ -67,7 +67,7 @@ class EchoLayer(YowInterfaceLayer):
 
             self.ReplyWith("-- End of List --", sendto)
                 
-        elif messagereceived == "whoishome":
+        elif messagereceived == "traffic":
             result = traffic.traffic()
             print results
 
