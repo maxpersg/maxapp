@@ -76,8 +76,8 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "bustotown":
             results = ltadatamall.bus()
 
-            self.ReplyWith(results["Services"]["NextBus"],sendto)
-            self.ReplyWith(results["Services"]["SubsequentBus"],sendto)
+            self.ReplyWith(results[2][1],sendto)
+            #self.ReplyWith(results["Services"]["SubsequentBus"],sendto)
 
 
 
