@@ -5,13 +5,13 @@ import httplib2 as http
 
 #External library
 
-        #Authentication parameter
-        headers = { 'AccountKey' : 'MnvwjNVGDVKl8Ig9uipL3Q==',
-                'UniqueUserID' : 'ee84f4e2-caae-4ab5-afa3-02a7348efd2f',
-                'accept' : 'application/json'} #Request results in JSON
+#Authentication parameter
+headers = { 'AccountKey' : 'MnvwjNVGDVKl8Ig9uipL3Q==',
+        'UniqueUserID' : 'ee84f4e2-caae-4ab5-afa3-02a7348efd2f',
+        'accept' : 'application/json'} #Request results in JSON
 
-        #API parameters
-        uri = 'http://datamall.cloudapp.net' #Resource URL
+#API parameters
+uri = 'http://datamall.cloudapp.net' #Resource URL
 
 
 
