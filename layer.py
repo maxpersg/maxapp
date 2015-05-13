@@ -8,7 +8,7 @@ from yowsup.layers.protocol_media.protocolentities  import VCardMediaMessageProt
 
 import os, subprocess
 
-import traffic
+import ltadatamall
 
 message = 'yo'
 authorisednumber = '6590675647'
@@ -68,12 +68,16 @@ class EchoLayer(YowInterfaceLayer):
             self.ReplyWith("-- End of List --", sendto)
                 
         elif messagereceived == "traffic":
-            results = traffic.traffic()
+            results = ltadatamall.traffic()
             for x in results["d"]:
                 #print(jsonObj["d"][str(x)]["Message"])
                 self.ReplyWith(x["Message"],sendto)
 
-
+        elif messagereceived == "bustotown":
+            results = ltadatamall.bus()
+            for x in results["d"]:
+                #print(jsonObj["d"][str(x)]["Message"])
+                self.ReplyWith(x,sendto)
 
 
         else :
