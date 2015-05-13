@@ -77,7 +77,7 @@ class EchoLayer(YowInterfaceLayer):
             results = ltadatamall.bus()
             for x in results:
                 #print(jsonObj["d"][str(x)]["Message"])
-                self.ReplyWith(x,sendto)
+                self.ReplyWith(results,sendto)
 
 
         else :

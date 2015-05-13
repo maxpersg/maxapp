@@ -49,7 +49,7 @@ def bus():
         path = '/ltaodataservice/BusArrival?'
 
         #Query parameters
-        params = {'BusStopID':'83139','ServiceNo':'15'} #bef blk 484
+        params = {'BusStopID':'44691','ServiceNo':'922'} #bef blk 484
                 #'ServiceNo':'922'}
 
         #'Latitude':'1.304980', #Search within a radius
