@@ -75,6 +75,7 @@ class EchoLayer(YowInterfaceLayer):
 
         elif messagereceived == "bustotown":
             results = ltadatamall.bus()
+            print results
             for x in results:
                 #print(jsonObj["d"][str(x)]["Message"])
                 self.ReplyWith(results,sendto)
