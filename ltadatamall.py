@@ -45,7 +45,7 @@ def traffic():
         return jsonObj
 
 def bus():
-        uri = 'http://datamall2.cloudapp.net'
+        uri = 'http://datamall2.mytransport.sg'
         path = '/ltaodataservice/BusArrival?'
 
         #Query parameters
