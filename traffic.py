@@ -43,7 +43,7 @@ def traffic():
 
         #for x in jsonObj["d"]:
                 #print(jsonObj["d"][str(x)]["Message"])
-                print x["Message"]
+        #        print x["Message"]
         #print json.dump(
         #print content
 
