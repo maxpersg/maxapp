@@ -8,6 +8,8 @@ from yowsup.layers.protocol_media.protocolentities  import VCardMediaMessageProt
 
 import os, subprocess
 
+import traffic
+
 message = 'yo'
 authorisednumber = '6590675647'
 
@@ -65,7 +67,9 @@ class EchoLayer(YowInterfaceLayer):
 
             self.ReplyWith("-- End of List --", sendto)
                 
-
+        elif messagereceived == "whoishome":
+            result = traffic.traffic()
+            print results
 
 
 
