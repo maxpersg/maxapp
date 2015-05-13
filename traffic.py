@@ -4,7 +4,7 @@ from urlparse import urlparse
 import httplib2 as http
 
 #External library
-def traffic
+def traffic():
 
         #Authentication parameter
         headers = { 'AccountKey' : 'MnvwjNVGDVKl8Ig9uipL3Q==',
