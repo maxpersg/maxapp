@@ -80,11 +80,12 @@ class EchoLayer(YowInterfaceLayer):
             results = ltadatamall.bus(972,44691)
 #asd
             for x in results["Services"]:
-                timestamp = x["NextBus"]["EstimatedArrival"]
-                newtimestamp = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9) #convert to GMT +8
+                NextBusTS = x["NextBus"]["EstimatedArrival"]
+                NextBusTS2 = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9) #convert to GMT +8
                 #print "922 Next Bus: " + newtimestamp
-
-                self.ReplyWith("922 Next Bus: " + str(newtimestamp),sendto)
+                SubBusTS = x["SubBusTS"]["EstimatedArrival"]
+                SubBusTS2 = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9)
+                self.ReplyWith("922 Next Bus: " + str(NextBusTS2) /n "Subsequent: " + str(SubBusTS2) ,sendto)
 
 
 
