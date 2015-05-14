@@ -85,7 +85,7 @@ class EchoLayer(YowInterfaceLayer):
                 #print "922 Next Bus: " + newtimestamp
                 SubBusTS = x["SubsequentBus"]["EstimatedArrival"]
                 SubBusTS2 = datetime.strptime(SubBusTS, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9)
-                self.ReplyWith("922 Next Bus: " + str(NextBusTS2) + "Subsequent: " + str(SubBusTS2) ,sendto)
+                self.ReplyWith("922 Next Bus: " + str(NextBusTS2.Time) + " Subsequent: " + str(SubBusTS2.Time) ,sendto)
 
 
 
