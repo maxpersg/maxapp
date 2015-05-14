@@ -77,7 +77,7 @@ class EchoLayer(YowInterfaceLayer):
                 self.ReplyWith(x["Message"],sendto)
 
         elif messagereceived == "bustotown":
-            results = ltadatamall.bus(922,44691)
+            results = ltadatamall.bus(972,44691)
 
             for x in results["Services"]:
                 timestamp = x["NextBus"]["EstimatedArrival"]
