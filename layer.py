@@ -78,7 +78,7 @@ class EchoLayer(YowInterfaceLayer):
 
         elif messagereceived == "bustotown":
 
-            self.QueryBus(972,44691)
+            self.QueryBus("972","44691")
 
 
         else :
