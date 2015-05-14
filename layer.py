@@ -81,7 +81,7 @@ class EchoLayer(YowInterfaceLayer):
 
 
 
-            print results
+            #print results
             #for x in results:
                 #print(jsonObj["d"][str(x)]["Message"])
             #    self.ReplyWith(results,sendto)
