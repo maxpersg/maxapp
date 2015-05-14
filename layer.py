@@ -80,7 +80,6 @@ class EchoLayer(YowInterfaceLayer):
 
             self.QueryBus("972","44691")
 
-
         else :
             reponse = "invalid command"
             self.ReplyWith("Invalid command", sendto)
@@ -93,7 +92,7 @@ class EchoLayer(YowInterfaceLayer):
 
 
 
-    def QueryBus(Bus,BusStopNo):
+    def QueryBus(self, Bus, BusStopNo):
 
         results = ltadatamall.bus(Bus,BusStopNo)
 #asd
