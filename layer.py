@@ -77,19 +77,8 @@ class EchoLayer(YowInterfaceLayer):
                 self.ReplyWith(x["Message"],sendto)
 
         elif messagereceived == "bustotown":
-            results = ltadatamall.bus(972,44691)
-#asd
-            for x in results["Services"]:
-                NextBusTS = x["NextBus"]["EstimatedArrival"]
-                NextBusTS2 = datetime.strptime(NextBusTS, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9) #convert to GMT +8
-                NextBusLoad = x["NextBus"]["Load"]
-                #print "922 Next Bus: " + newtimestamp
-                SubBusTS = x["SubsequentBus"]["EstimatedArrival"]
-                SubBusLoad = x["SubsequentBus"]["Load"]
-                SubBusTS2 = datetime.strptime(SubBusTS, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9)
-                self.ReplyWith("922 Next Bus: " + str(datetime.time(NextBusTS2)) + "(" + str(NextBusLoad) + ")" + " Subsequent: " + str(datetime.time(SubBusTS2)) + "(" + str(SubBusLoad) + ")",sendto)
 
-
+            QueryBus(972,44691)
 
 
         else :
@@ -104,6 +93,19 @@ class EchoLayer(YowInterfaceLayer):
 
 
 
+    def QueryBus(Bus,BusStopNo):
+
+        results = ltadatamall.bus(Bus,BusStopNo)
+#asd
+        for x in results["Services"]:
+            NextBusTS = x["NextBus"]["EstimatedArrival"]
+            NextBusTS2 = datetime.strptime(NextBusTS, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9) #convert to GMT +8
+            NextBusLoad = x["NextBus"]["Load"]
+            #print "922 Next Bus: " + newtimestamp
+            SubBusTS = x["SubsequentBus"]["EstimatedArrival"]
+            SubBusLoad = x["SubsequentBus"]["Load"]
+            SubBusTS2 = datetime.strptime(SubBusTS, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9)
+            self.ReplyWith(str(Bus) + "Next Bus: " + str(datetime.time(NextBusTS2)) + " (" + str(NextBusLoad) + ")" + " Subsequent: " + str(datetime.time(SubBusTS2)) + " (" + str(SubBusLoad) + ")",sendto)
 
 
     def ReplyWith(self, response, recipient):
