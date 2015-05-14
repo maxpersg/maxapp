@@ -79,6 +79,20 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "bustotown":
 
             self.QueryBus("972","44691",sendto)
+            self.QueryBus("922","44691",sendto)
+
+        elif messagereceived == "bustobpp":
+            self.QueryBus("972","44699",sendto)
+            self.QueryBus("922","44699",sendto)
+
+
+
+        elif messagereceived == "busfromnex":
+
+            self.QueryBus("109","6609",sendto)
+            self.QueryBus("103","6609",sendto)
+            self.QueryBus("317","6609",sendto)
+
 
         else :
             reponse = "invalid command"
@@ -104,7 +118,7 @@ class EchoLayer(YowInterfaceLayer):
             SubBusTS = x["SubsequentBus"]["EstimatedArrival"]
             SubBusLoad = x["SubsequentBus"]["Load"]
             SubBusTS2 = datetime.strptime(SubBusTS, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9)
-            self.ReplyWith(str(Bus) + "Next Bus: " + str(datetime.time(NextBusTS2)) + " (" + str(NextBusLoad) + ")" + " Subsequent: " + str(datetime.time(SubBusTS2)) + " (" + str(SubBusLoad) + ")",sendto)
+            self.ReplyWith(str(Bus) + " Next Bus: " + str(datetime.time(NextBusTS2)) + " (" + str(NextBusLoad) + ")" + " Subsequent: " + str(datetime.time(SubBusTS2)) + " (" + str(SubBusLoad) + ")",sendto)
 
 
     def ReplyWith(self, response, recipient):
