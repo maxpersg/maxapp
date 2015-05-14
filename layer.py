@@ -79,10 +79,12 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "bustotown":
             results = ltadatamall.bus()
 
-        for x in results["Services"]:
-            timestamp = x["NextBus"]["EstimatedArrival"]
-            newtimestamp = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9) #convert to GMT +8
-            print newtimestamp
+            for x in results["Services"]:
+                timestamp = x["NextBus"]["EstimatedArrival"]
+                newtimestamp = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9) #convert to GMT +8
+                print "922 Next Bus: " + newtimestamp
+
+                self.ReplyWith("922 Next Bus: " + newtimestamp,sendto)
 
 
 
