@@ -10,6 +10,9 @@ import os, subprocess
 
 import ltadatamall
 
+#for converting time stampe from LTADATAMALL
+from datetime import datetime, timedelta
+
 message = 'yo'
 authorisednumber = '6590675647'
 
@@ -76,15 +79,12 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "bustotown":
             results = ltadatamall.bus()
 
-            #self.ReplyWith(results["Services"]["NextBus"]["EstimatedArrival"],sendto)
-            #self.ReplyWith(results["Services"]["SubsequentBus"],sendto)
+        for x in results["Services"]:
+            timestamp = x["NextBus"]["EstimatedArrival"]
+            newtimestamp = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9) #convert to GMT +8
+            print newtimestamp
 
 
-
-            #print results
-            #for x in results:
-                #print(jsonObj["d"][str(x)]["Message"])
-            #    self.ReplyWith(results,sendto)
 
 
         else :
