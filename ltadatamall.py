@@ -75,6 +75,6 @@ def bus(Bus,BusStopNo):
         #Parse JSON to print
         jsonObj = json.loads(content)
         print json.dumps(jsonObj, sort_keys=True, indent=4)
-        print jsonObj["Services"]["NextBus"]   
+        #print jsonObj["Services"]["NextBus"]   
 
         return jsonObj
