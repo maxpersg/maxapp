@@ -12,8 +12,8 @@ if __name__=="__main__":
 		'accept' : 'application/json'} #Request results in JSON
 
 	#API parameters
-	uri = 'http://datamall.cloudapp.net' #Resource URL
-	path = '/ltaodataservice.svc/IncidentSet?'
+        uri = 'http://datamall2.mytransport.sg'
+        path = '/ltaodataservice/BusArrival?'
 
 	#Query parameters
         params = {'BusStopID':'44691','ServiceNo':'922'} #bef blk 484
@@ -36,9 +36,6 @@ if __name__=="__main__":
 		headers)
 	#Parse JSON to print
 	jsonObj = json.loads(content)
-	print json.dumps(jsonObj, sort_keys=True, indent=4)
+	#print json.dumps(jsonObj, sort_keys=True, indent=4)
 
-	#Save result to file
-	with open("traffic_incidents.json","w") as outfile: #Saving jsonObj["d"]
-
-		json.dump(jsonObj, outfile, sort_keys=True, indent=4, ensure_ascii=False)
+	print
