@@ -82,7 +82,7 @@ class EchoLayer(YowInterfaceLayer):
                 os.system("ssh root@192.168.2.50 poweroff")
                 self.ReplyWith("Shutting down MAX-NAS",sendto)
 
-            elif
+            else:
                 self.ReplyWith("NOT AUTHORISED",sendto)
 
 
