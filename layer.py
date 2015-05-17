@@ -76,6 +76,17 @@ class EchoLayer(YowInterfaceLayer):
                 #print(jsonObj["d"][str(x)]["Message"])
                 self.ReplyWith(x["Message"],sendto)
 
+        elif messagereceived == "shutdownnas":
+            if recipient == authorisednumber:
+
+                os.system("ssh root@192.168.2.50 poweroff"
+                self.ReplyWith("Shutting down MAX-NAS",sendto)
+
+            elif
+                self.ReplyWith("NOT AUTHORISED",sendto)
+
+
+
         elif messagereceived == "bustotown":
 
             self.QueryBus("972","44691",sendto)
