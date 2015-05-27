@@ -79,7 +79,7 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "shutdownnas":
             if recipient == authorisednumber:
 
-                os.system("ssh -i /home/pi/.ssh/id_rsa.pub root@192.168.2.50 poweroff")
+                os.system("ssh -i /home/pi/.ssh/id_rsa root@192.168.2.50 poweroff")
                 self.ReplyWith("Shutting down MAX-NAS",sendto)
 
             else:
