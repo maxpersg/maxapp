@@ -154,11 +154,11 @@ class EchoLayer(YowInterfaceLayer):
 
         os.system("ssh -i /home/pi/.ssh/id_rsa root@192.168.2.50 poweroff")
 
-    def WirelessSwitchOff():
+    def WirelessSwitchOff(self):
 
         os.system("sudo /home/pi/Projects/maxapp/codesend/codesend 6642535")
 
-    def WirelessSwitchOn():
+    def WirelessSwitchOn(self):
 
         os.system("sudo /home/pi/Projects/maxapp/codesend/codesend 6642543")
 
