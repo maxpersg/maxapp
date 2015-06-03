@@ -79,8 +79,8 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "shutdownnas":
             if recipient == authorisednumber:
 
-                self.shutdownnas
-                self.WirelessSwitchOff
+                self.shutdownnas()
+                self.WirelessSwitchOff()
                 self.ReplyWith("Shutting down MAX-NAS",sendto)
 
             else:
@@ -90,7 +90,7 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "powerswitchon":
             if recipient == authorisednumber:
 
-                self.WirelessSwitchOn
+                self.WirelessSwitchOn()
 
             else:
                 self.ReplyWith("NOT AUTHORISED",sendto)
@@ -98,7 +98,7 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "powerswitchoff":
             if recipient == authorisednumber:
 
-                self.WirelessSwitchOff
+                self.WirelessSwitchOff()
 
             else:
                 self.ReplyWith("NOT AUTHORISED",sendto)                
