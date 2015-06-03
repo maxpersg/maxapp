@@ -150,7 +150,7 @@ class EchoLayer(YowInterfaceLayer):
 
 
 
-    def shutdownnas():
+    def shutdownnas(self):
 
         os.system("ssh -i /home/pi/.ssh/id_rsa root@192.168.2.50 poweroff")
 
