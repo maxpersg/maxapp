@@ -79,13 +79,29 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "shutdownnas":
             if recipient == authorisednumber:
 
-                os.system("ssh -i /home/pi/.ssh/id_rsa root@192.168.2.50 poweroff")
+                shutdownnas()
+                WirelessSwitchOff()
                 self.ReplyWith("Shutting down MAX-NAS",sendto)
 
             else:
                 self.ReplyWith("NOT AUTHORISED",sendto)
 
 
+        elif messagereceived == "powerswitchon":
+            if recipient == authorisednumber:
+
+                WirelessSwitchOn()
+
+            else:
+                self.ReplyWith("NOT AUTHORISED",sendto)
+
+        elif messagereceived == "powerswitchoff":
+            if recipient == authorisednumber:
+
+                WirelessSwitchOff()
+
+            else:
+                self.ReplyWith("NOT AUTHORISED",sendto)                
 
         elif messagereceived == "bustotown":
 
@@ -97,6 +113,23 @@ class EchoLayer(YowInterfaceLayer):
             self.QueryBus("922","44699",sendto)
 
 
+        elif messagereceived == "busfrombpp":
+            self.QueryBus("972","44614",sendto)
+            self.QueryBus("922","44614",sendto)
+
+        elif messagereceived == "busfromcck":
+            self.QueryBus("190","44539",sendto)
+            self.QueryBus("975","44539",sendto)
+
+
+        elif messagereceived == "busfromlakeside":
+            self.QueryBus("180","28099",sendto)
+
+        elif messagereceived == "busfromtj":
+            self.QueryBus("98","21591",sendto)            
+            self.QueryBus("98M","21591",sendto)            
+            self.QueryBus("240","21591",sendto)            
+            self.QueryBus("246","21591",sendto)            
 
         elif messagereceived == "busfromnex":
 
@@ -116,6 +149,18 @@ class EchoLayer(YowInterfaceLayer):
         # self.toLower(outgoingMessageProtocolEntity)       
 
 
+
+    def shutdownnas():
+
+        os.system("ssh -i /home/pi/.ssh/id_rsa root@192.168.2.50 poweroff")
+
+    def WirelessSwitchOff():
+
+        os.system("sudo /home/pi/Projects/maxapp/codesend/codesend 6642535")
+
+    def WirelessSwitchOn():
+
+        os.system("sudo /home/pi/Projects/maxapp/codesend/codesend 6642543")
 
     def QueryBus(self, Bus, BusStopNo, sendto):
 
