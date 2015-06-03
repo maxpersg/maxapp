@@ -114,8 +114,8 @@ class EchoLayer(YowInterfaceLayer):
 
 
         elif messagereceived == "busfrombpp":
-            self.QueryBus("972","44614",sendto)
-            self.QueryBus("922","44614",sendto)
+            self.QueryBus("972","44641",sendto)
+            self.QueryBus("922","44641",sendto)
 
         elif messagereceived == "busfromcck":
             self.QueryBus("190","44539",sendto)
