@@ -168,12 +168,12 @@ class EchoLayer(YowInterfaceLayer):
 #asd
         for x in results["Services"]:
             NextBusTS = x["NextBus"]["EstimatedArrival"]
-            NextBusTS2 = datetime.strptime(NextBusTS, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9) #convert to GMT +8
+            NextBusTS2 = datetime.strptime(NextBusTS, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=8) #convert to GMT +8
             NextBusLoad = x["NextBus"]["Load"]
             #print "922 Next Bus: " + newtimestamp
             SubBusTS = x["SubsequentBus"]["EstimatedArrival"]
             SubBusLoad = x["SubsequentBus"]["Load"]
-            SubBusTS2 = datetime.strptime(SubBusTS, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=9)
+            SubBusTS2 = datetime.strptime(SubBusTS, "%Y-%m-%dT%H:%M:%S+00:00") + timedelta(hours=8)
             self.ReplyWith(str(Bus) + " Next Bus: " + str(datetime.time(NextBusTS2)) + " (" + str(NextBusLoad) + ")" + " Subsequent: " + str(datetime.time(SubBusTS2)) + " (" + str(SubBusLoad) + ")",sendto)
 
 
