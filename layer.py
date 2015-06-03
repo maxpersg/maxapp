@@ -76,7 +76,7 @@ class EchoLayer(YowInterfaceLayer):
                 #print(jsonObj["d"][str(x)]["Message"])
                 self.ReplyWith(x["Message"],sendto)
 
-        elif messagereceived == "shutdownnas":
+        elif messagereceived == "shutdown nas":
             if recipient == authorisednumber:
 
                 self.shutdownnas()
