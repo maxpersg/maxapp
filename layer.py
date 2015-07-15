@@ -60,7 +60,7 @@ class EchoLayer(YowInterfaceLayer):
             result = subprocess.check_output("sudo nmap -sn 192.168.2.1-100", shell=True)
             self.ReplyWith(result, sendto)
 
-        elif messagereceived == "whoishome":
+        elif messagereceived == "who is home":
             result = subprocess.check_output("sudo nmap -sn 192.168.2.1-100", shell=True)
             #self.ReplyWith(result, sendto)
 
@@ -116,6 +116,8 @@ class EchoLayer(YowInterfaceLayer):
         elif messagereceived == "busfrombpp":
             self.QueryBus("972","44641",sendto)
             self.QueryBus("922","44641",sendto)
+            self.QueryBus("180","44641",sendto)
+
 
         elif messagereceived == "busfromcck":
             self.QueryBus("190","44539",sendto)
@@ -136,6 +138,17 @@ class EchoLayer(YowInterfaceLayer):
             self.QueryBus("109","66009",sendto)
             self.QueryBus("103","66009",sendto)
             self.QueryBus("317","66009",sendto)
+
+        elif messagereceived == "busfromjp":
+            self.QueryBus("79","22009",sendto)
+            self.QueryBus("246","22009",sendto)
+            self.QueryBus("180","22009",sendto)
+
+        elif messagereceived == "busfromgsk":
+            self.QueryBus("79","21259",sendto)
+            self.QueryBus("246","21259",sendto)            
+
+
 
 
         else :
