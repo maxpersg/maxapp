@@ -103,48 +103,48 @@ class EchoLayer(YowInterfaceLayer):
             else:
                 self.ReplyWith("NOT AUTHORISED",sendto)                
 
-        elif messagereceived == "bustotown":
+        elif messagereceived == "bus to town":
 
             self.QueryBus("972","44691",sendto)
             self.QueryBus("922","44691",sendto)
 
-        elif messagereceived == "bustobpp":
+        elif messagereceived == "bus to bpp":
             self.QueryBus("972","44699",sendto)
             self.QueryBus("922","44699",sendto)
 
 
-        elif messagereceived == "busfrombpp":
+        elif messagereceived == "bus from bpp":
             self.QueryBus("972","44641",sendto)
             self.QueryBus("922","44641",sendto)
             self.QueryBus("180","44641",sendto)
 
 
-        elif messagereceived == "busfromcck":
+        elif messagereceived == "bus from cck":
             self.QueryBus("190","44539",sendto)
             self.QueryBus("975","44539",sendto)
 
 
-        elif messagereceived == "busfromlakeside":
+        elif messagereceived == "bus from lakeside":
             self.QueryBus("180","28099",sendto)
 
-        elif messagereceived == "busfromtj":
+        elif messagereceived == "bus from tj":
             self.QueryBus("98","21591",sendto)            
             self.QueryBus("98M","21591",sendto)            
             self.QueryBus("240","21591",sendto)            
             self.QueryBus("246","21591",sendto)            
 
-        elif messagereceived == "busfromnex":
+        elif messagereceived == "bus from nex":
 
             self.QueryBus("109","66009",sendto)
             self.QueryBus("103","66009",sendto)
             self.QueryBus("317","66009",sendto)
 
-        elif messagereceived == "busfromjp":
+        elif messagereceived == "bus from jp":
             self.QueryBus("79","22009",sendto)
             self.QueryBus("246","22009",sendto)
             self.QueryBus("180","22009",sendto)
 
-        elif messagereceived == "busfromgsk":
+        elif messagereceived == "bus from gsk":
             self.QueryBus("79","21259",sendto)
             self.QueryBus("246","21259",sendto)            
 
