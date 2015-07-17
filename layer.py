@@ -89,6 +89,7 @@ class EchoLayer(YowInterfaceLayer):
 
         elif messagereceived == "power switch on":
             if recipient == authorisednumber:
+                self.ReplyWith("Swtiched On",sendto)                
 
                 self.WirelessSwitchOn()
 
@@ -99,6 +100,8 @@ class EchoLayer(YowInterfaceLayer):
             if recipient == authorisednumber:
 
                 self.WirelessSwitchOff()
+                self.ReplyWith("Swtiched Off",sendto)                
+
 
             else:
                 self.ReplyWith("NOT AUTHORISED",sendto)                
